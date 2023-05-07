@@ -1,0 +1,1 @@
+# sosmed-next-prisma-pg
