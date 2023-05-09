@@ -1,6 +1,8 @@
 import { Roboto } from 'next/font/google';
 
 import './globals.css';
+import ClientOnly from './components/ClientOnly';
+import { Navbar } from './components/navbar';
 
 export const metadata = {
   title: 'Kurao-sosmed',
@@ -21,7 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <ClientOnly>
+          <Navbar />
+        </ClientOnly>
+        <div className="pt-16">{children}</div>
+      </body>
     </html>
   );
 }

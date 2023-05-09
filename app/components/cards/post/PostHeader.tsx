@@ -1,38 +1,53 @@
 'use client';
 
-const PostHeader = () => {
+import { PostUserImages } from './';
+
+interface PostHeaderProps {
+  user: any;
+}
+
+const PostHeader: React.FC<PostHeaderProps> = () => {
+  const dummyUser = 'https://randomuser.me/api/portraits/men/35.jpg';
   return (
     <>
       {/* Profile-User */}
-      <div className="flex pb-6 items-center justify-between">
+      <div
+        className="
+      flex 
+      items-center 
+      justify-between
+      pb-6 
+      "
+      >
         <div className="flex">
-          <a className="inline-block mr-4" href="#">
-            <img
-              className="rounded-full max-w-none w-12 h-12"
-              src="https://randomuser.me/api/portraits/men/35.jpg"
-            />
-          </a>
+          <PostUserImages imageSource={dummyUser} />
           <div className="flex flex-col">
             <div>
-              <a
-                className="inline-block text-lg font-bold dark:text-white"
-                href="#"
+              <div
+                className="
+                  font-bold 
+                  inline-block 
+                  text-lg  
+                  
+                  dark:text-white
+                  "
               >
                 Wade Warren
-              </a>
+              </div>
             </div>
-            <div className="text-slate-500 dark:text-slate-300 dark:text-slate-400">
+            <div
+              className="
+            text-slate-500 
+            
+            dark:text-slate-300 
+           "
+            >
               July 17, 2018
             </div>
           </div>
         </div>
       </div>
       {/* End-Profile-User */}
-      {/* Title */}
-      <h2 className="text-3xl font-extrabold dark:text-white">
-        Web Design templates Selection
-      </h2>
-      {/* End-Title */}
     </>
   );
 };

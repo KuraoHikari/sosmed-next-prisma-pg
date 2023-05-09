@@ -1,6 +1,15 @@
-import PostHeader from './PostHeader';
 import PostBody from './PostBody';
-import PostFooter from './PostFooter';
 import PostComment from './PostComment';
+import PostFooter from './PostFooter';
+import PostHeader from './PostHeader';
+import PostBodyImages from './PostBodyImages';
+import PostUserImages from './PostUserImage';
 
-export { PostHeader, PostBody, PostComment, PostFooter };
+export {
+  PostHeader,
+  PostBody,
+  PostBodyImages,
+  PostUserImages,
+  PostComment,
+  PostFooter,
+};
