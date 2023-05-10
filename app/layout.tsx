@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google';
 import './globals.css';
 import ClientOnly from './components/ClientOnly';
 import { Navbar } from './components/navbar';
+import { RegisterModal } from './components/modals';
 
 export const metadata = {
   title: 'Kurao-sosmed',
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
+          <RegisterModal />
           <Navbar />
         </ClientOnly>
         <div className="pt-16">{children}</div>
