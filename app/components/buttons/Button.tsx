@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { IconType } from 'react-icons';
+import { IconType } from "react-icons";
 
 interface ButtonProps {
   label: string;
@@ -28,17 +28,28 @@ const Button: React.FC<ButtonProps> = ({
         disabled:opacity-70
         disabled:cursor-not-allowed
         rounded-lg
-        hover:bg-slate-600
-        hover:border-rose-300
+
+        hover:opacity-80
+        dark:hover:bg-slate-600
+
+        dark:hover:border-rose-300
         transition
         w-full
-        ${outline ? 'bg-slate-800' : 'bg-slate-700'}
-        ${outline ? 'border-rose-400' : 'border-slate-800'}
-        ${outline ? 'text-white' : 'text-white'}
-        ${small ? 'text-sm' : 'text-md'}
-        ${small ? 'py-1' : 'py-3'}
-        ${small ? 'font-light' : 'font-semibold'}
-        ${small ? 'border-[1px]' : 'border-2'}
+        ${
+          outline
+            ? "dark:bg-slate-800 bg-white"
+            : "dark:bg-slate-700 bg-rose-500"
+        }
+        ${
+          outline
+            ? "dark:border-rose-400 border-black"
+            : "dark:border-slate-800 border-rose-500"
+        }
+        ${outline ? "dark:text-white text-black" : "dark:text-white text-white"}
+        ${small ? "text-sm" : "text-md"}
+        ${small ? "py-1" : "py-3"}
+        ${small ? "font-light" : "font-semibold"}
+        ${small ? "border-[1px]" : "border-2"}
       `}
     >
       {Icon && (

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React, { useCallback, useEffect, useState } from 'react';
-import { IoMdClose } from 'react-icons/io';
-import Button from '../buttons/Button';
+import React, { useCallback, useEffect, useState } from "react";
+import { IoMdClose } from "react-icons/io";
+import Button from "../buttons/Button";
 
 interface ModalProps {
   actionLabel: string;
@@ -100,8 +100,8 @@ const Modal: React.FC<ModalProps> = ({
           translate
             duration-300
             h-full
-            ${showModal ? 'translate-y-0' : 'translate-y-full'}
-            ${showModal ? 'opacity-100' : 'opacity-0'}`}
+            ${showModal ? "translate-y-0" : "translate-y-full"}
+            ${showModal ? "opacity-100" : "opacity-0"}`}
         >
           <div
             className="
@@ -116,7 +116,9 @@ const Modal: React.FC<ModalProps> = ({
              flex 
              flex-col 
              w-full 
-             bg-slate-800 
+             bg-neutral-100
+             dark:bg-slate-800 
+             
              outline-none 
              focus:outline-none
             "
@@ -129,7 +131,8 @@ const Modal: React.FC<ModalProps> = ({
           rounded-t
           justify-center
           relative
-          border-slate-700
+          border-neutral-300
+          dark:border-slate-700
           border-b-[1px]
           "
             >
