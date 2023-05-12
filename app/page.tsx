@@ -1,6 +1,6 @@
-import ClientOnly from './components/ClientOnly';
-import { PostCard } from './components/cards';
-import './page.css';
+import ClientOnly from "./components/ClientOnly";
+import { PostCard } from "./components/cards";
+import "./page.css";
 
 export default function Home() {
   return (
@@ -27,6 +27,11 @@ export default function Home() {
               xl:columns-3
           "
           >
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
             <PostCard />
           </div>
         </div>

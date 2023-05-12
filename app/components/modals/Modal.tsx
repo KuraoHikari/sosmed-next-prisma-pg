@@ -68,102 +68,104 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <div
       className="
-      bg-neutral-800/70
-      flex
-      fixed
-      inset-0
-      items-center
-      justify-center
-      outline-none
-      overflow-x-hidden
-      overflow-y-auto
-      z-50
-
-      focus:outline-none
+    justify-center
+    items-center
+    flex
+    overflow-x-hidden
+    overflow-y-auto
+    fixed
+    inset-0
+    z-50
+    outline-none
+    focus:outline-none
+    bg-neutral-800/70
   "
     >
       <div
         className="
-            h-full
-            mx-auto
-            my-6
             relative
             w-full
-
-            md:h-auto
             md:w-4/6
-            lg:h-auto
             lg:w-3/6
             xl:w-2/5
+            my-6
+            mx-auto
+            h-full
+            lg:h-auto
+            md:h-auto
         "
       >
         <div
           className={`
+          translate
             duration-300
             h-full
-
-            translate
             ${showModal ? 'translate-y-0' : 'translate-y-full'}
             ${showModal ? 'opacity-100' : 'opacity-0'}`}
         >
           <div
             className="
-            bg-slate-800 
-             border-0 
-             flex 
-             flex-col 
-             h-full
-             outline-none 
-             relative 
-             rounded-lg 
-             shadow-lg 
              translate
-             w-full 
-
-             focus:outline-none
-
+             h-full
              lg:h-auto
              md:h-auto
+             border-0 
+             rounded-lg 
+             shadow-lg 
+             relative 
+             flex 
+             flex-col 
+             w-full 
+             bg-neutral-100
+             dark:bg-slate-800 
+             
+             outline-none 
+             focus:outline-none
             "
           >
             <div
               className="
-                border-b-[1px]
-                border-slate-700
-                flex 
-                items-center 
-                justify-center
-                p-6
-                relative   
-                rounded-t
+          flex 
+          items-center 
+          p-6
+          rounded-t
+          justify-center
+          relative
+          border-neutral-300
+          dark:border-slate-700
+          border-b-[1px]
           "
             >
               <button
                 className="
-                    absolute
-                    border-0 
-                    left-9
                     p-1
-                    transition
-         
+                    border-0 
                     hover:opacity-70
+                    transition
+                    absolute
+                    left-9
                   "
                 onClick={handleClose}
               >
-                <IoMdClose size={18} className="fill-rose-400" />
+                <IoMdClose
+                  size={18}
+                  className="
+        fill-rose-400
+        "
+                />
               </button>
-              <div className="font-semibold text-lg">{title}</div>
+              <div className="text-lg font-semibold">{title}</div>
             </div>
             {/*body*/}
-            <div className="flex-auto p-6 relative ">{body}</div>
+            <div className="relative p-6 flex-auto">{body}</div>
             {/*footer*/}
             <div className="flex flex-col gap-2 p-6">
               <div
                 className="
                 flex 
                 flex-row 
-                gap-4 
                 items-center 
+                gap-4 
                 w-full"
               >
                 {secondaryAction && secondaryActionLabel && (
