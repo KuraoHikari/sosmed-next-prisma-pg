@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { IconType } from 'react-icons';
+import { IconType } from "react-icons";
 
 interface ButtonProps {
   label: string;
@@ -37,19 +37,23 @@ const Button: React.FC<ButtonProps> = ({
         w-full
         ${
           outline
-            ? 'dark:bg-slate-800 bg-white'
-            : 'dark:bg-slate-700 bg-rose-500'
+            ? "dark:bg-slate-800 bg-white"
+            : "dark:bg-slate-700 bg-rose-500"
         }
         ${
           outline
-            ? 'dark:border-rose-400 border-black'
-            : 'dark:border-slate-800 border-rose-500'
+            ? "dark:border-rose-400 border-black"
+            : "dark:border-slate-800 border-rose-500"
         }
-        ${outline ? 'dark:text-white text-black' : 'dark:text-white text-white'}
-        ${small ? 'text-sm' : 'text-md'}
-        ${small ? 'py-1' : 'py-3'}
-        ${small ? 'font-light' : 'font-semibold'}
-        ${small ? 'border-[1px]' : 'border-2'}
+        ${
+          outline
+            ? "dark:text-white text-black hover:bg-slate-200"
+            : "dark:text-white text-white"
+        }
+        ${small ? "text-sm" : "text-md"}
+        ${small ? "py-1" : "py-3"}
+        ${small ? "font-light" : "font-semibold"}
+        ${small ? "border-[1px]" : "border-2"}
       `}
     >
       {Icon && (

@@ -6,7 +6,7 @@ import { Heading } from "../../Heading";
 import { Input } from "../../inputs";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
-const RegisterModal = () => {
+const LoginModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -30,14 +30,7 @@ const RegisterModal = () => {
         errors={errors}
         required
       />
-      <Input
-        id="name"
-        label="Name"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
+
       <Input
         id="password"
         label="Password"
@@ -51,7 +44,7 @@ const RegisterModal = () => {
   );
   return (
     <Modal
-      isOpen={false}
+      isOpen={true}
       body={bodyContent}
       //   onClose={() => {}}
       //   onSubmit={() => {}}
@@ -59,4 +52,4 @@ const RegisterModal = () => {
     />
   );
 };
-export default RegisterModal;
+export default LoginModal;
