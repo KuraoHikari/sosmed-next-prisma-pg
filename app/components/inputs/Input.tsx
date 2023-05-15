@@ -58,7 +58,7 @@ const Input: React.FC<InputProps> = ({
    top-4
    z-10 
    origin-[0] 
-    left-4
+   left-4
    peer-placeholder-shown:scale-100 
    peer-placeholder-shown:translate-y-0 
    peer-focus:scale-75
