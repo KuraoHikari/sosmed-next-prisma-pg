@@ -1,4 +1,9 @@
+'use client';
+
+import { useRegisterModal } from '@/app/hooks';
+
 const Navbar = () => {
+  const registerModal = useRegisterModal();
   return (
     <nav
       className="
@@ -50,6 +55,22 @@ const Navbar = () => {
         sm:mx-6"
         >
           Friend
+        </div>
+        <div
+          className="
+        border-b-2 
+        border-transparent 
+        mx-1.5
+
+        dark:hover:text-gray-200
+        
+        hover:text-gray-800 
+        hover:border-blue-500  
+        
+        sm:mx-6"
+          onClick={registerModal.onOpen}
+        >
+          Register
         </div>
 
         {/* <a

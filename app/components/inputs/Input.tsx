@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface InputProps {
   id: string;
@@ -15,7 +15,7 @@ interface InputProps {
 const Input: React.FC<InputProps> = ({
   id,
   label,
-  type = "text",
+  type = 'text',
   disabled,
 
   required,
@@ -48,11 +48,11 @@ const Input: React.FC<InputProps> = ({
 
           dark:bg-slate-700
           dark:text-white
-          ${errors[id] ? "border-rose-500" : "border-slate-400"}
+          ${errors[id] ? 'border-rose-500' : 'border-slate-400'}
           ${
             errors[id]
-              ? "focus:border-rose-500"
-              : "focus:border-black dark:focus:border-neutral-400"
+              ? 'focus:border-rose-500'
+              : 'focus:border-black dark:focus:border-neutral-400'
           }
         `}
       />
@@ -71,7 +71,7 @@ const Input: React.FC<InputProps> = ({
    peer-placeholder-shown:translate-y-0 
    peer-focus:scale-75
    peer-focus:-translate-y-4
-   ${errors[id] ? "text-rose-500" : "text-zinc-400"}
+   ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}
  `}
       >
         {label}

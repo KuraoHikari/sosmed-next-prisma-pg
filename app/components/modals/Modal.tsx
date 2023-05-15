@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useCallback, useEffect, useState } from "react";
-import { IoMdClose } from "react-icons/io";
-import Button from "../buttons/Button";
+import React, { useCallback, useEffect, useState } from 'react';
+import { IoMdClose } from 'react-icons/io';
+import Button from '../buttons/Button';
 
 interface ModalProps {
   actionLabel: string;
@@ -33,7 +33,7 @@ const Modal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     setShowModal(isOpen);
-  }, []);
+  }, [isOpen]);
 
   const handleClose = useCallback(() => {
     if (disabled) {
@@ -85,6 +85,7 @@ const Modal: React.FC<ModalProps> = ({
         className="
             relative
             w-full
+          
             md:w-4/6
             lg:w-3/6
             xl:w-2/5
@@ -97,11 +98,11 @@ const Modal: React.FC<ModalProps> = ({
       >
         <div
           className={`
-          translate
+            translate
             duration-300
             h-full
-            ${showModal ? "translate-y-0" : "translate-y-full"}
-            ${showModal ? "opacity-100" : "opacity-0"}`}
+            ${showModal ? 'translate-y-0' : 'translate-y-full'}
+            ${showModal ? 'opacity-100' : 'opacity-0'}`}
         >
           <div
             className="
@@ -154,11 +155,13 @@ const Modal: React.FC<ModalProps> = ({
         "
                 />
               </button>
-              <div className="text-lg font-semibold">{title}</div>
+              <div className="text-lg font-semibold dark:text-white">
+                {title}
+              </div>
             </div>
-            {/*body*/}
+
             <div className="relative p-6 flex-auto">{body}</div>
-            {/*footer*/}
+
             <div className="flex flex-col gap-2 p-6">
               <div
                 className="
@@ -176,12 +179,6 @@ const Modal: React.FC<ModalProps> = ({
                     outline
                   />
                 )}
-                <Button
-                  disabled={disabled}
-                  label={actionLabel}
-                  onClick={handleSubmit}
-                  outline
-                />
                 <Button
                   disabled={disabled}
                   label={actionLabel}

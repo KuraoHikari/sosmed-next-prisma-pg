@@ -1,12 +1,17 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Modal } from "../";
-import { Heading } from "../../Heading";
-import { Input } from "../../inputs";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useState } from 'react';
+import { Modal } from '../';
+import { Heading } from '../../Heading';
+import { Input } from '../../inputs';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { Button } from '../../buttons';
+
+import { FcGoogle } from 'react-icons/fc';
+import { useRegisterModal } from '@/app/hooks';
 
 const RegisterModal = () => {
+  const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -14,11 +19,17 @@ const RegisterModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
+      name: '',
+      email: '',
+      password: '',
     },
   });
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    // setIsLoading(true);
+    console.log(data);
+  };
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Wellcome to KuraoSosmed" subtitle="Create an account!" />
@@ -49,14 +60,31 @@ const RegisterModal = () => {
       />
     </div>
   );
+
+  const footerContent = (
+    <div className="flex flex-col gap-4 mt-4">
+      <hr />
+      <Button
+        outline
+        label="Continue with Google"
+        icon={FcGoogle}
+        onClick={() => {}}
+      />
+
+      <div className="text-neutral-500"></div>
+    </div>
+  );
   return (
     <Modal
-      isOpen={false}
+      title="Register"
+      isOpen={registerModal.isOpen}
+      actionLabel="Continue"
       body={bodyContent}
-      //   onClose={() => {}}
-      //   onSubmit={() => {}}
-      actionLabel="Register"
+      footer={footerContent}
+      onClose={registerModal.onClose}
+      onSubmit={handleSubmit(onSubmit)}
     />
   );
 };
+
 export default RegisterModal;
