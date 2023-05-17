@@ -9,6 +9,7 @@ import { Button } from '../../buttons';
 
 import { FcGoogle } from 'react-icons/fc';
 import { useRegisterModal } from '@/app/hooks';
+import axios from 'axios';
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -26,8 +27,26 @@ const RegisterModal = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    // setIsLoading(true);
-    console.log(data);
+    setIsLoading(true);
+
+    axios
+      .post(`/api/register`, data)
+      .then(() => {
+        // toast.success('Registered!');
+        registerModal.onClose();
+        // loginModal.onOpen();
+        console.log('berhasil');
+      })
+      .catch((error: any) => {
+        console.log(
+          '🚀 ~ file: registerModal.tsx:39 ~ RegisterModal ~ error:',
+          error
+        );
+        // toast.error('Something went wrong');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const bodyContent = (
