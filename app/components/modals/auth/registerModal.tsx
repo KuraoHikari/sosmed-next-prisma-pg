@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Modal } from '../';
 import { Heading } from '../../Heading';
 import { Input } from '../../inputs';
@@ -8,11 +8,12 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Button } from '../../buttons';
 
 import { FcGoogle } from 'react-icons/fc';
-import { useRegisterModal } from '@/app/hooks';
+import { useLoginModal, useRegisterModal } from '@/app/hooks';
 import axios from 'axios';
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -38,16 +39,17 @@ const RegisterModal = () => {
         console.log('berhasil');
       })
       .catch((error: any) => {
-        console.log(
-          '🚀 ~ file: registerModal.tsx:39 ~ RegisterModal ~ error:',
-          error
-        );
         // toast.error('Something went wrong');
       })
       .finally(() => {
         setIsLoading(false);
       });
   };
+
+  const onToggle = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [registerModal, loginModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -90,7 +92,34 @@ const RegisterModal = () => {
         onClick={() => {}}
       />
 
-      <div className="text-neutral-500"></div>
+      <div
+        className="
+          font-light
+          mt-4 
+          text-neutral-500 
+          text-center 
+
+          dark:text-neutral-300
+        "
+      >
+        <p>
+          Already have an account?
+          <span
+            onClick={onToggle}
+            className="
+              cursor-pointer 
+              text-neutral-800
+
+              hover:underline
+
+              dark:text-white
+            "
+          >
+            {' '}
+            Log in
+          </span>
+        </p>
+      </div>
     </div>
   );
   return (
