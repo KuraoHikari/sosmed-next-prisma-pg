@@ -1,9 +1,15 @@
 'use client';
 
 import { useRegisterModal } from '@/app/hooks';
+import { SafeUser } from '@/app/types';
 
-const Navbar = () => {
+interface NavbarProps {
+  currentUser?: SafeUser | null;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
   const registerModal = useRegisterModal();
+  console.log(currentUser, '=====');
   return (
     <nav
       className="
