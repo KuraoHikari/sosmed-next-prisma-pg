@@ -1,7 +1,8 @@
 import { getServerSession } from 'next-auth';
 
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
-import { prisma } from '@/app/libs';
+import { prisma, excludeKey } from '@/app/libs';
+
 
 export async function getSession() {
   return await getServerSession(authOptions);
@@ -24,9 +25,10 @@ export async function getCurrentUser() {
     if (!currentUser) {
       return null;
     }
+    const userWithoutPassword = excludeKey(currentUser, ['hashedPassword'])
 
     return {
-      ...currentUser,
+      ...userWithoutPassword,
       createdAt: currentUser.createdAt.toISOString(),
       updatedAt: currentUser.updatedAt.toISOString(),
       emailVerified: currentUser.emailVerified?.toISOString() || null,

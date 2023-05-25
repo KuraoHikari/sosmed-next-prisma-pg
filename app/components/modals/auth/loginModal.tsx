@@ -40,7 +40,7 @@ const LoginModal = () => {
 
       if (callback?.ok) {
         // toast.success('Logged in');
-        console.log('loginn');
+
         router.refresh();
         loginModal.onClose();
       }
