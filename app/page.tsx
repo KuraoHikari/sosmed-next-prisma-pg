@@ -30,7 +30,7 @@ export default function Home() {
             <PostCard />
           </div>
         </div>
-        <footer className="w-full flex justify-center flex-col py-4 text-center mt-14">
+        {/* <footer className="w-full flex justify-center flex-col py-4 text-center mt-14">
           <p className="mb-1">
             Built by
             <a
@@ -135,7 +135,7 @@ export default function Home() {
               </svg>
             </a>
           </div>
-        </footer>
+        </footer> */}
       </div>
     </ClientOnly>
   );

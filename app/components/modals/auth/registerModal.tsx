@@ -10,6 +10,7 @@ import { Button } from '../../buttons';
 import { FcGoogle } from 'react-icons/fc';
 import { useLoginModal, useRegisterModal } from '@/app/hooks';
 import axios from 'axios';
+import { signIn } from 'next-auth/react';
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -89,7 +90,7 @@ const RegisterModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn('google')}
       />
 
       <div
