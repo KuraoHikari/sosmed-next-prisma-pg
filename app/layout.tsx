@@ -3,7 +3,7 @@ import { Roboto } from 'next/font/google';
 import './globals.css';
 import ClientOnly from './components/ClientOnly';
 import { Navbar } from './components/navbar';
-import { LoginModal, RegisterModal } from './components/modals';
+import { LoginModal, RegisterModal, PostModal } from './components/modals';
 import { getCurrentUser } from './actions';
 
 export const metadata = {
@@ -30,6 +30,7 @@ export default async function RootLayout({
         <ClientOnly>
           <LoginModal />
           <RegisterModal />
+          <PostModal />
           <Navbar currentUser={currentUser} />
         </ClientOnly>
         <div className="pt-16">{children}</div>
