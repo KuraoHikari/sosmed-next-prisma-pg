@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import axios from 'axios';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import axios from "axios";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
-import { Modal } from '../';
-import { Heading } from '../../Heading';
-import { ImageUpload, Input } from '../../inputs';
-import { useState } from 'react';
-import { usePostModal } from '@/app/hooks';
+import { Modal } from "../";
+import { Heading } from "../../Heading";
+import { ImageUpload, Input } from "../../inputs";
+import { useState } from "react";
+import { usePostModal } from "@/app/hooks";
 
 const PostModal = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,9 +21,9 @@ const PostModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      title: '',
-      content: '',
-      images: '',
+      title: "",
+      content: "",
+      imageSrc: "",
     },
   });
   const setCustomValue = (id: string, value: any) => {
@@ -33,10 +33,21 @@ const PostModal = () => {
       shouldValidate: true,
     });
   };
-  const imageSrc = watch('imageSrc');
+  const imageSrc = watch("imageSrc");
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
+
+    axios
+      .post("/api/posts", data)
+      .then(() => {
+        reset();
+        postModal.onClose();
+      })
+      .catch(() => {})
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const bodyContent = (
@@ -64,7 +75,7 @@ const PostModal = () => {
       />
       <hr />
       <ImageUpload
-        onChange={(value) => setCustomValue('imageSrc', value)}
+        onChange={(value) => setCustomValue("imageSrc", value)}
         value={imageSrc}
       />
     </div>

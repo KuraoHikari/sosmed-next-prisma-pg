@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface PostModalStore {
   isOpen: boolean;
@@ -7,7 +7,7 @@ interface PostModalStore {
 }
 
 const usePostModal = create<PostModalStore>((set) => ({
-  isOpen: true,
+  isOpen: false,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false }),
 }));

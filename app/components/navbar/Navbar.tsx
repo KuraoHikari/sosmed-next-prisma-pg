@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useLoginModal, useRegisterModal } from '@/app/hooks';
-import { SafeUser } from '@/app/types';
-import { signOut } from 'next-auth/react';
-import MenuItem from './MenuItem';
-import { useRouter } from 'next/navigation';
-import { useCallback } from 'react';
+import { useLoginModal, usePostModal, useRegisterModal } from "@/app/hooks";
+import { SafeUser } from "@/app/types";
+import { signOut } from "next-auth/react";
+import MenuItem from "./MenuItem";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
@@ -15,9 +15,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
   const router = useRouter();
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const postModal = usePostModal();
   const logOut = useCallback(async () => {
     await signOut();
-  }, [router, currentUser]);
+  }, []);
 
   return (
     <nav
@@ -54,11 +55,11 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
         >
           Home
         </div> */}
-        <MenuItem label="Home" onClick={() => router.push('/')} />
+        <MenuItem label="Home" onClick={() => router.push("/")} />
         {currentUser && (
           <>
-            <MenuItem label="Friend" onClick={() => router.push('/friend')} />
-
+            <MenuItem label="Friend" onClick={() => router.push("/friend")} />
+            <MenuItem label="Create Post" onClick={postModal.onOpen} />
             <MenuItem label="Log-out" onClick={logOut} />
           </>
         )}

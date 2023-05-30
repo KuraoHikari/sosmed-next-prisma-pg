@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { AiFillGithub } from 'react-icons/ai';
-import { FcGoogle } from 'react-icons/fc';
-import { useCallback, useState } from 'react';
-import { Modal } from '../';
-import { Heading } from '../../Heading';
-import { Input } from '../../inputs';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-import { useLoginModal, useRegisterModal } from '@/app/hooks';
-import { signIn } from 'next-auth/react';
-import { Button } from '../../buttons';
+import { AiFillGithub } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
+import { useCallback, useState } from "react";
+import { Modal } from "../";
+import { Heading } from "../../Heading";
+import { Input } from "../../inputs";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useLoginModal, useRegisterModal } from "@/app/hooks";
+import { signIn } from "next-auth/react";
+import { Button } from "../../buttons";
 
 const LoginModal = () => {
   const router = useRouter();
@@ -21,18 +21,19 @@ const LoginModal = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    signIn('credentials', {
+    signIn("credentials", {
       ...data,
       redirect: false,
     }).then((callback) => {
@@ -40,6 +41,7 @@ const LoginModal = () => {
 
       if (callback?.ok) {
         // toast.success('Logged in');
+        reset();
 
         router.refresh();
         loginModal.onClose();
@@ -86,7 +88,7 @@ const LoginModal = () => {
       <Button
         outline
         label="Continue with Google"
-        onClick={() => signIn('google')}
+        onClick={() => signIn("google")}
         icon={FcGoogle}
       />
 
@@ -113,7 +115,7 @@ const LoginModal = () => {
             dark:text-white
         "
           >
-            {' '}
+            {" "}
             Create an account
           </span>
         </p>

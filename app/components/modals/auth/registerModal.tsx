@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useCallback, useState } from 'react';
-import { Modal } from '../';
-import { Heading } from '../../Heading';
-import { Input } from '../../inputs';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { Button } from '../../buttons';
+import { useCallback, useState } from "react";
+import { Modal } from "../";
+import { Heading } from "../../Heading";
+import { Input } from "../../inputs";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { Button } from "../../buttons";
 
-import { FcGoogle } from 'react-icons/fc';
-import { useLoginModal, useRegisterModal } from '@/app/hooks';
-import axios from 'axios';
-import { signIn } from 'next-auth/react';
+import { FcGoogle } from "react-icons/fc";
+import { useLoginModal, useRegisterModal } from "@/app/hooks";
+import axios from "axios";
+import { signIn } from "next-auth/react";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -19,12 +19,13 @@ const RegisterModal = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: '',
-      email: '',
-      password: '',
+      name: "",
+      email: "",
+      password: "",
     },
   });
 
@@ -34,10 +35,11 @@ const RegisterModal = () => {
     axios
       .post(`/api/register`, data)
       .then(() => {
+        reset();
         // toast.success('Registered!');
         registerModal.onClose();
         // loginModal.onOpen();
-        console.log('berhasil');
+        console.log("berhasil");
       })
       .catch((error: any) => {
         // toast.error('Something went wrong');
@@ -90,7 +92,7 @@ const RegisterModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => signIn('google')}
+        onClick={() => signIn("google")}
       />
 
       <div
@@ -116,7 +118,7 @@ const RegisterModal = () => {
               dark:text-white
             "
           >
-            {' '}
+            {" "}
             Log in
           </span>
         </p>
