@@ -1,8 +1,14 @@
+import getPosts, { IPostParams } from './actions/getPosts';
 import ClientOnly from './components/ClientOnly';
 import { PostCard } from './components/cards';
 import './page.css';
 
-export default function Home() {
+interface HomeProps {
+  searchParams: IPostParams;
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  const posts = await getPosts(searchParams);
   return (
     <ClientOnly>
       <div
@@ -27,7 +33,9 @@ export default function Home() {
               xl:columns-3
           "
           >
-            <PostCard />
+            {posts.map((post) => (
+              <PostCard key={post.id} />
+            ))}
           </div>
         </div>
         {/* <footer className="w-full flex justify-center flex-col py-4 text-center mt-14">
