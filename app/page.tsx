@@ -9,6 +9,8 @@ interface HomeProps {
 
 export default async function Home({ searchParams }: HomeProps) {
   const posts = await getPosts(searchParams);
+  console.log('🚀 ~ file: page.tsx:12 ~ Home ~ posts:', posts);
+
   return (
     <ClientOnly>
       <div
@@ -34,7 +36,7 @@ export default async function Home({ searchParams }: HomeProps) {
           "
           >
             {posts.map((post) => (
-              <PostCard key={post.id} />
+              <PostCard key={post.id} data={post} author={post.author} />
             ))}
           </div>
         </div>

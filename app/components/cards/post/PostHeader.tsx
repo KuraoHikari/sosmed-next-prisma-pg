@@ -3,11 +3,15 @@
 import { PostUserImages } from './';
 
 interface PostHeaderProps {
-  user: any;
+  user: {
+    email: string;
+    name?: string | null;
+    image?: string | null;
+  };
+  createdAt: string;
 }
 
-const PostHeader: React.FC<PostHeaderProps> = () => {
-  const dummyUser = 'https://randomuser.me/api/portraits/men/35.jpg';
+const PostHeader: React.FC<PostHeaderProps> = ({ user }) => {
   return (
     <>
       {/* Profile-User */}
@@ -20,7 +24,7 @@ const PostHeader: React.FC<PostHeaderProps> = () => {
       "
       >
         <div className="flex">
-          <PostUserImages imageSource={dummyUser} />
+          <PostUserImages imageSource={user.image} />
           <div className="flex flex-col">
             <div>
               <div
@@ -32,7 +36,7 @@ const PostHeader: React.FC<PostHeaderProps> = () => {
                   dark:text-white
                   "
               >
-                Wade Warren
+                {user.name}
               </div>
             </div>
             <div

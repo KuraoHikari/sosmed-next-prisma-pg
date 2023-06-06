@@ -3,7 +3,7 @@
 import Image from 'next/image';
 
 interface PostUserImagesProps {
-  imageSource: string;
+  imageSource?: string | null;
 }
 
 const PostUserImages: React.FC<PostUserImagesProps> = ({ imageSource }) => {
